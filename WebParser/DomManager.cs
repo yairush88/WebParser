@@ -6,9 +6,14 @@ namespace WebParser
     public class DomManager
     {
         private IDocumentFactory _documentFactory;
-        private ElementMapper _elementMapper;
+        private readonly IMapper _elementMapper;
         private IEnumerable<IWebElement> _elements;
 
+        public DomManager()
+        {
+            _elementMapper = new ElementMapper();
+        }
+        
         public void CreateReport(string url, FileType fileType, string filePath)
         {
             _documentFactory = CreateFactory(fileType);
